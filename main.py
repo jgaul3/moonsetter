@@ -17,7 +17,7 @@ def delete_old_wallpaper():
 
 
 def download_current_moon_image():
-    curr_year = 2024
+    curr_year = 2025
     if datetime.now().year != curr_year:
         raise Exception('Year out of date')
 
@@ -26,8 +26,9 @@ def download_current_moon_image():
     # nasa_url = f'https://svs.gsfc.nasa.gov/vis/a000000/a004800/a004874/frames/5760x3240_16x9_30p/plain/moon.{hours_since_new_years}.tif'
     # nasa_url = f'https://svs.gsfc.nasa.gov/vis/a000000/a004900/a004955/frames/5760x3240_16x9_30p/plain/moon.{hours_since_new_years:04d}.tif'
     # nasa_url = f'https://svs.gsfc.nasa.gov/vis/a000000/a005000/a005048/frames/5760x3240_16x9_30p/plain/moon.{hours_since_new_years:04d}.tif'
-    nasa_url = f'https://svs.gsfc.nasa.gov/vis/a000000/a005100/a005187/frames/5760x3240_16x9_30p/plain/moon.{hours_since_new_years:04d}.tif'
-    response = requests.get(nasa_url)
+    # nasa_url = f'https://svs.gsfc.nasa.gov/vis/a000000/a005100/a005187/frames/5760x3240_16x9_30p/plain/moon.{hours_since_new_years:04d}.tif'
+    nasa_url = f'https://svs.gsfc.nasa.gov/vis/a000000/a005400/a005415/frames/5760x3240_16x9_30p/plain/moon.{hours_since_new_years:04d}.tif'
+    response = requests.get(nasa_url, verify=False)
     if response.status_code != 200:
         raise Exception(f'Bad status code: {response.status_code}')
     with open(absolute_picture_filename, 'wb') as pic_file:
